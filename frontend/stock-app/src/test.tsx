@@ -46,10 +46,6 @@ function Stocks() {
     fetchStocks(currentPage);
   }, [currentPage]);
 
-  const firstItemIndex = (currentPage - 1) * itemsPerPage + 1;
-  const lastItemIndex = Math.min(currentPage * itemsPerPage, totalItems);
-
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -70,7 +66,7 @@ function Stocks() {
           <div className="mb-1 flex flex-wrap gap-5 xl:gap-7.5">
             <ButtonDefault
               label="Add"
-              link="/stocktable"
+              link="/stockadd"
               customClasses="bg-primary text-white py-[11px] px-6"
             >
               <svg
@@ -80,9 +76,9 @@ function Stocks() {
                 className="size-5"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-11.25a.75.75 0 0 0-1.5 0v2.5h-2.5a.75.75 0 0 0 0 1.5h2.5v2.5a.75.75 0 0 0 1.5 0v-2.5h2.5a.75.75 0 0 0 0-1.5h-2.5v-2.5Z"
-                  clip-rule="evenodd"
                 />
               </svg>
             </ButtonDefault>
@@ -199,18 +195,19 @@ function Stocks() {
               </tbody>
             </table>
           )}
-        </div>
-        {/* Pagination Controls */}
-        <div className="border-tbg-[#F7F9FC] flex items-center justify-between px-4 py-3 text-left dark:bg-dark-2 sm:px-6">
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="border-tbg-[#F7F9FC] flex items-center justify-between px-4 py-3 text-left dark:bg-dark-2 sm:px-6">
             <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
               <div>
                 <p className="text-md text-dark dark:text-white">
                   Showing
-                  <span className="px-2 font-medium">{firstItemIndex}</span>
+                  <span className="px-2 font-medium">1</span>
                   to
-                  <span className="px-2 font-medium">{lastItemIndex}</span>
+                  <span className="px-2 font-medium">10</span>
                   of
-                  <span className="px-2 font-medium">{totalPages}</span>
+                  <span className="px-2 font-medium">97</span>
                   results
                 </p>
               </div>
@@ -306,6 +303,7 @@ function Stocks() {
               </div>
             </div>
           </div>
+        </div>
       </div>
     </>
   );
